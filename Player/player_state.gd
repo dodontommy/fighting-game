@@ -20,21 +20,12 @@ var walk_anim: String = "Walk"
 
 #Utility Functions
 func determine_sprite_flipped(event_text: String) -> void:
-	if event_text in left_actions:
+	if event_text in player.left_actions:
 		sprite_flipped = true
-	elif event_text in right_actions:
+	elif event_text in player.right_actions:
 		sprite_flipped = false
 	sprite.flip_h = sprite_flipped
-
-#Input Keys
-var movement_key: String = "Movement"
-var left_key: String = "Left"
-var right_key: String = "Right"
-
-#Input Action
-var left_actions: Array = InputMap.action_get_events(left_key).map(func(action: InputEvent) -> String: return action.as_text().get_slice(" (", 0))
-var right_actions: Array = InputMap.action_get_events(right_key).map(func(action: InputEvent) -> String: return action.as_text().get_slice(" (", 0))
-
+	
 func process_physics(delta: float) -> State:
 	player.velocity.y += gravity * delta
 	player.move_and_slide()

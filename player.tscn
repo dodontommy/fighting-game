@@ -1,5 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://cxbe2q66ksnc4"]
+[gd_scene load_steps=25 format=3 uid="uid://cxbe2q66ksnc4"]
 
+[ext_resource type="Script" path="res://Player/player.gd" id="1_foq3i"]
 [ext_resource type="Texture2D" uid="uid://7ng1ti8bt53r" path="res://Player/Sprites/Idle/idle1.png" id="1_mfrlj"]
 [ext_resource type="Texture2D" uid="uid://ctjcb7qyhf336" path="res://Player/Sprites/Idle/idle2.png" id="2_0rg28"]
 [ext_resource type="Texture2D" uid="uid://6m8qg0kxwt2x" path="res://Player/Sprites/Idle/idle3.png" id="3_ik4di"]
@@ -35,7 +36,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -70,7 +71,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walk",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shuft"]
@@ -79,7 +80,7 @@ size = Vector2(18, 39)
 [sub_resource type="Animation" id="Animation_35w7y"]
 resource_name = "Idle"
 loop_mode = 1
-step = 0.2
+step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -99,7 +100,7 @@ tracks/1/path = NodePath("Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
@@ -135,7 +136,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_xifk2"]
 resource_name = "Walk"
 loop_mode = 1
-step = 0.2
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -155,10 +156,10 @@ tracks/1/path = NodePath("Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g28g3"]
@@ -169,6 +170,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_foq3i")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0rb6h")
