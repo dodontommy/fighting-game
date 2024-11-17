@@ -4,7 +4,7 @@ extends Node
 func enter() -> void:
     pass
 
-func exit() -> void:
+func exit(_new_state: State = null) -> void:
     pass
 
 func process_frame(_delta: float) -> State:
