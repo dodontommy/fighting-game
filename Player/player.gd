@@ -10,10 +10,12 @@ var player_2: bool = false
 var movement_key: String
 var left_key: String
 var right_key: String
+var jump_key: String
 
 # Input Action
 var left_actions: Array
 var right_actions: Array
+var jump_actions: Array
 
 func _ready(): state_machine.init()
 
@@ -31,12 +33,15 @@ func initialize(is_player_2: bool):
 func initialize_keys():
 	if player_2:
 		movement_key = "Movement_P2"
+		jump_key = "Jump_P2"
 		left_key = "Left_P2"
 		right_key = "Right_P2"
 	else:
 		movement_key = "Movement"
+		jump_key = "Jump"
 		left_key = "Left"
 		right_key = "Right"
 
 	left_actions = InputMap.action_get_events(left_key).map(func(action: InputEvent) -> String: return action.as_text().get_slice(" (", 0))
 	right_actions = InputMap.action_get_events(right_key).map(func(action: InputEvent) -> String: return action.as_text().get_slice(" (", 0))
+	jump_actions = InputMap.action_get_events(jump_key).map(func(action: InputEvent) -> String: return action.as_text().get_slice(" (", 0))

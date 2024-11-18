@@ -1,19 +1,14 @@
 class_name PlayerWalkState
 extends PlayerState
 
-const SPEED: float = 75
+const BASE_SPEED: float = 75
 
 func enter() -> void:
+	super()
 	player.animation.play(walk_anim)
 
 func exit(new_state: State = null) -> void:
 	super(new_state)
-	player.velocity.x = 0
-
-func process_input(event: InputEvent) -> State:
-	super(event)
-	if event.is_action_pressed(player.movement_key): determine_sprite_flipped(event.as_text())
-	return null
 
 # Process the physics of the walk state
 # In this case, the process physics function will be responsible for transitioning the player
@@ -28,7 +23,21 @@ func process_physics(delta: float) -> State:
 	if get_move_dir() == 0.0: return idle_state
 	return null
 
-func get_move_dir() -> float: return Input.get_axis(player.left_key, player.right_key)
+func process_input(event: InputEvent) -> State:
+	super(event)
+	if event.is_action_pressed(player.jump_key):
+		return jump_state
+	return null
+
+
+func get_move_dir() -> float:
+	var left_pressed = Input.is_action_pressed(player.left_key)
+	var right_pressed = Input.is_action_pressed(player.right_key)
+	if left_pressed and not right_pressed:
+		return -1
+	elif right_pressed and not left_pressed:
+		return 1
+	return 0
 
 func do_move(move_dir: float) -> void:
-	player.velocity.x = move_dir * SPEED
+	player.velocity.x = move_dir * BASE_SPEED
