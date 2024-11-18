@@ -1,6 +1,8 @@
 class_name State
 extends Node
 
+@export var hurtbox: CollisionShape2D
+
 func enter() -> void:
     pass
 
