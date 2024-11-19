@@ -15,4 +15,6 @@ func process_input(event: InputEvent) -> State:
 		return walk_state
 	else: if event.is_action_pressed(player.jump_key):
 		return jump_state
+	else: if event.is_action_pressed(player.punch_key):
+		return punch_state
 	return null

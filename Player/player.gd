@@ -11,6 +11,7 @@ var movement_key: String
 var left_key: String
 var right_key: String
 var jump_key: String
+var punch_key: String
 
 # Input Action
 var left_actions: Array
@@ -36,11 +37,13 @@ func initialize_keys():
 		jump_key = "Jump_P2"
 		left_key = "Left_P2"
 		right_key = "Right_P2"
+		punch_key = "Punch_P2"
 	else:
 		movement_key = "Movement"
 		jump_key = "Jump"
 		left_key = "Left"
 		right_key = "Right"
+		punch_key = "Punch"
 
 	left_actions = InputMap.action_get_events(left_key).map(func(action: InputEvent) -> String: return action.as_text().get_slice(" (", 0))
 	right_actions = InputMap.action_get_events(right_key).map(func(action: InputEvent) -> String: return action.as_text().get_slice(" (", 0))

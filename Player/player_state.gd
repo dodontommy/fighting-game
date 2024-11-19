@@ -14,6 +14,8 @@ var idle_anim: String = "Idle"
 var walk_anim: String = "Walk"
 var jump_anim: String = "Jump"
 var fall_anim: String = "Fall"
+var punch_anim: String = "Punch"
+var kick_anim: String = "Kick"
 
 #States
 @export_group("States")
@@ -21,6 +23,8 @@ var fall_anim: String = "Fall"
 @export var walk_state: PlayerState
 @export var jump_state: PlayerState
 @export var fall_state: PlayerState
+@export var punch_state: PlayerState
+@export var kick_state: PlayerState
 
 #Utility Functions
 func determine_sprite_flipped(event_text: String) -> void:
@@ -41,9 +45,9 @@ func process_input(event: InputEvent) -> State:
 
 func enter() -> void:
 	super()
-	hurtbox.disabled = false
+	if hurtbox: hurtbox.disabled = false
 
 func exit(new_state: State = null) -> void:
 	super()
-	hurtbox.disabled = true
+	if hurtbox: hurtbox.disabled = true
 	new_state.sprite_flipped = sprite_flipped
